@@ -1,0 +1,44 @@
+#main {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+h3 {
+    font-size: 2vw;
+}
+
+#text {
+    font-size: 1vw;
+}
+
+#escenari {
+    text-align: center;
+    position: relative;
+    background-color: #f0f0f0;
+    margin: 1em auto;
+}
+
+#foto {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.carta {
+    position: absolute;
+    display: inline-block;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+table {
+    border: 4px solid #3c3dd6;
+    width: 40%;
+    height: 300px;
+    position: relative;
+    margin: 1em auto;
+    vertical-align: center;
+}

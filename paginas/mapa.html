@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba Mapa</title>
+    <link rel="stylesheet" href="../css/jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="../css/estilosmapa.css" type="text/css"/>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="../js/jquery-jvectormap-world-mill.js"></script>
+    </head>
+<body >
+    <div class="container">
+        <img src="../img/back.png" style="float: left" onclick="goBack()" style="cursor: pointer">
+
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+
+        <div id="world-map" style="width: 600px; height: 400px; margin: 0 auto"></div>       
+        <h1 id="name" align="center" style="width: 600px; margin: 0 auto;"></h1>
+        
+        <div id="lista" style="width: 600px; margin: 0 auto; text-align: center">
+            <ol id="list" style="visibility: hidden; list-style: none; color: #4f7d61;">
+                <li id="emisora1"> </li>
+                <li id="emisora2"> </li>
+                <li id="emisora3"> </li>
+            </ol>
+        </div>
+
+        <div style="width: 300px; margin-top: 15px; margin: 0 auto">
+            <audio controls autoplay id="audioTag"> 
+                El navegador no soporta el reproductor de audio.
+            </audio>
+        </div>
+         
+    </div>
+    
+    <script>
+        var audioHTML = document.getElementById("audioTag");
+        
+        function sintonizar(url){   
+            audioHTML.setAttribute("src", url);
+            audioHTML.play();
+        }
+
+        function reproducir(element, code){
+            
+        }
+
+        $(function(){
+            $('#world-map').vectorMap({
+                map: 'world_mill',
+                backgroundColor: ['#FFFFFF'],
+                regionsSelectable: true,
+                regionsSelectableOne: true,
+                markersSelectable: true,
+                markersSelectableOne: true,
+                regionStyle: {
+                    initial: {
+                        fill: '#50cc82',
+                        "fill-opacity": 1,
+                        stroke: 'none',
+                        "stroke-width": 0,
+                        "stroke-opacity": 1
+                    },
+                    hover: {
+                        "fill-opacity": 0.5,
+                        cursor: 'pointer'
+                    },
+                    selected: {
+                        fill: '#4f7d61' //#6bffa7
+                    },
+                    selectedHover: {
+                    }
+                },
+                series: {
+                    regions: [{
+                        values: {
+                            'ES': '#3e9d01',
+                            'AR': '#3e9d01',
+                            'US': '#3e9d01',
+                            'GB': '#3e9d01',
+                            'BO': '#3e9d01',
+                            'RU': '#3e9d01',
+                            'AU': '#3e9d01',
+                            'BR': '#3e9d01',
+                            'EG': '#3e9d01',
+                            'MA': '#3e9d01',
+                            'FR': '#3e9d01',
+                        },
+                        attribute: 'fill'
+                    }]
+                },
+                onRegionClick: function(element, code)
+                {
+                    var map = $('#world-map').vectorMap('get', 'mapObject');
+                    var region = map.getRegionName(code);
+                    var message = region  + ' ( ' + code.toUpperCase() + '). Emisoras:';
+
+                    document.querySelector('.container #name').innerHTML = message;
+                    document.getElementById("list").style.visibility = 'visible';
+
+                    var emisora1 = document.getElementById("emisora1");
+                    var emisora2 = document.getElementById("emisora2");
+                    var emisora3 = document.getElementById("emisora3");
+
+
+                    //-----------------Lista de emisoras según país. Reproducimos la seleccionada-----------------------------
+                    //Links --> appradiofm.com
+                    if (code === 'ES'){
+                        emisora1.innerHTML = "esRadio (offline)";
+                        emisora2.innerHTML = "Los 40 Principales";
+                        emisora3.innerHTML = "Cadena 100 (offline)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("./recursos/esRadio.mp3")}); //esRadio: http://91.121.68.52:8054/;stream/1
+                        emisora2.addEventListener("click", function(){sintonizar("https://20073.live.streamtheworld.com/LOS40AAC.aac?csegid=12000&gdpr=1&gdpr_consent=BOq_cs6Oq_ctGAHABBESCv-AAAAst7_______9______9uz_Ov_v_f__33e8__9v_l_7_-___u_-3zd4u_1vf99yfm1-7etr3tp_87ues2_Xur__79__3z3_9pxP78k89r7337Ew_v-_v8b7BCIJ&dist=los40-web-live_streaming_play&tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=300x250&sbmid=34492ea3-fab4-4b56-b50f-3d28a1f81cf0")}); //Los 40 principales.
+                        emisora3.addEventListener("click", function(){sintonizar("./recursos/cadena100.mp3")}); // Cadena 100: http://cadena100-streamers-mp3.flumotion.com/cope/cadena100.mp3
+                    }
+                    else if(code === 'AR'){
+                        emisora1.innerHTML = "Radio Del Plata";
+                        emisora2.innerHTML = "Radio Wtango (Buenos Aires)";
+                        emisora3.innerHTML = "Radio General Belgrano";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://181.119.157.98:8000/amdelplata.mp3")}); //Radio del plata
+                        emisora2.addEventListener("click", function(){sintonizar("http://200.43.192.20:8020/;stream/1")}); //Wtango (Buenos Aires)
+                        emisora3.addEventListener("click", function(){sintonizar("http://63.247.65.202:8160/stream")}); //Radio General Belgrano
+                    }
+                    else if(code =='GB'){ 
+                        emisora1.innerHTML = "BBC Radio 1";
+                        emisora2.innerHTML = "Kiss 100 FM";
+                        emisora3.innerHTML = "Heart London 106.2FM";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_q")}); //BBC Radio 1
+                        emisora2.addEventListener("click", function(){sintonizar("http://live-kiss.sharp-stream.com/kissnational.aac")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://media-ice.musicradio.com/HeartLondonMP3")}); //
+                    }
+                    else if (code == 'BO'){
+                        emisora1.innerHTML = "FM Bolivia";
+                        emisora2.innerHTML = "ECO Radio Bolivia";
+                        emisora3.innerHTML = "Radio ERBOL";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://stm11.streaming.profesional.bo:11300/;")}); //FM Bolivia
+                        emisora2.addEventListener("click", function(){sintonizar("http://94.23.6.53:8038/stream")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://108.170.61.114:7223/live")}); //
+                    }
+                    else if(code == 'FR'){
+                        emisora1.innerHTML = "Chèrie FM";
+                        emisora2.innerHTML = "France Inter";
+                        emisora3.innerHTML = "France Info";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://185.52.127.168/fr/30201/mp3_128.mp3?origine=radiogenre")}); //Chèrie FM
+                        emisora2.addEventListener("click", function(){sintonizar("http://icecast.radiofrance.fr/franceinter-midfi.mp3")}); //France inter
+                        emisora3.addEventListener("click", function(){sintonizar("http://icecast.radiofrance.fr/franceinfo-midfi.mp3")}); //France info
+                    }
+                    else if(code == 'US'){
+                        emisora1.innerHTML = "THE FOX 95.7 FM";
+                        emisora2.innerHTML = "The Jazz Groove (LA)";
+                        emisora3.innerHTML = "Radio Country Live (NY)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://14953.live.streamtheworld.com/KJFXFMAAC_SC")}); //THE FOX 95.7 FM
+                        emisora2.addEventListener("click", function(){sintonizar("http://199.180.75.36/stream")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://streaming.radiostreamlive.com/radiocountrylive_devices")}); //
+                    }
+                    else if (code == 'BR'){
+                        emisora1.innerHTML = "Super Rádio Tupi (Río)";
+                        emisora2.innerHTML = "Radio Satelite Brasil";
+                        emisora3.innerHTML = "Radio Hits Brasil";
+
+                        emisora1.addEventListener("click", function(){sintonizar("https://8923.brasilstream.com.br/stream")}); //Super Rádio Tupi
+                        emisora2.addEventListener("click", function(){sintonizar("http://216.245.222.134:8194/live")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://afiliadamix3.crossradio.com.br:9004/;stream/1")}); //
+                    }
+                    else if (code == 'EG'){
+                        emisora1.innerHTML = "Radio MASR - 88.7 FM (El Cairo)";
+                        emisora2.innerHTML = "Radio Sawa Egypt";
+                        emisora3.innerHTML = "Radio Egonair";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://streaming.radio.co/scc13a6b96/listen")}); //RADIO MASR - 88.7 FM (Egipto, El Cairo)
+                        emisora2.addEventListener("click", function(){sintonizar("https://n09.radiojar.com/whbvyphna3quv?rj-ttl=5&rj-tok=AAABbtW7bfkA0zscMzUECBRNjg")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://www.hostmyradio.com:8010/;stream/1")}); //
+                    }
+                    else if (code == 'MA'){
+                        emisora1.innerHTML = "Radio ATBIR";
+                        emisora2.innerHTML = "Radio Aswat";
+                        emisora3.innerHTML = "Radio MARS - 91.2 FM";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://node-15.zeno.fm/bqdbb6hd0neuv?rj-ttl=5&rj-tok=AAABbrHR6QUA2eTk8Kd5VErW2Q")}); //RADIO ATBIR (Marruecos)
+                        emisora2.addEventListener("click", function(){sintonizar("http://broadcast.ice.infomaniak.ch/aswat-high")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://radiomars.ice.infomaniak.ch/radiomars-128.mp3")}); //
+                    }
+                    else if (code == 'AU'){
+                        emisora1.innerHTML = "MOVE FM (Lithgow , New South Wales)";
+                        emisora2.innerHTML = "Australian Country Radio";
+                        emisora3.innerHTML = "ABC Country";
+
+                        emisora1.addEventListener("click", function(){sintonizar("https://au1.fastcast4u.com/proxy/midwestr?mp=/1")}); //MOVE FM (Lithgow , New South Wales, Australia)
+                        emisora2.addEventListener("click", function(){sintonizar("http://streaming.radio.co/s5ea3fdd1c/low")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://live-radio02.mediahubaustralia.com/CTRW/aac/")}); //
+                    }
+                    else if (code == 'RU'){
+                        emisora1.innerHTML = "ANON FM";
+                        emisora3.innerHTML = "Voice of Russia - Spanish";
+                        emisora2.innerHTML = "Voice of Russia";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://anon.fm:8000/radio.aac")}); //ANON FM (Rusia)
+                        emisora3.addEventListener("click", function(){sintonizar("http://icecast-ruvr.cdnvideo.ru/rian.voicespa")}); //
+                        emisora2.addEventListener("click", function(){sintonizar("http://icecast-ruvr.cdnvideo.ru/rian.voicerus")}); //
+                    }
+                },
+            });
+        });
+    </script>
+</body>
+</html>

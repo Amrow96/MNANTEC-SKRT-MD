@@ -1,0 +1,32 @@
+{
+    "Tarjetes": [
+        {
+            "name": "Codificador de Radio",
+            "image": "radio"
+        },
+        {
+            "name": "Amplificador",
+            "image": "ampli"
+        },
+        {
+            "name": "Microfon",
+            "image": "micro"
+        },
+        {
+            "name": "Cable",
+            "image": "cable"
+        },
+        {
+            "name": "Antena",
+            "image": "antena"
+        },
+        {
+            "name": "Taula de so",
+            "image": "taula"
+        },
+        {
+            "name": "John",
+            "image": "Doe"
+        }
+    ]
+}
