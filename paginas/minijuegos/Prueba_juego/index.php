@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <title>Proyecto - Prueba juego</title>
-    <script src="comportamiento.js"></script>
+    <script src="js/comportamiento.js"></script>
 </head>
+
 <body>
     <h1 id="titulo"> Conecta los cables con su pareja. </h1>
     <div class="left">
@@ -21,7 +23,7 @@
     </div>
 
     <div class="center">
-            
+
     </div>
 
     <div class="right">
@@ -31,18 +33,20 @@
 
         <div class="cableR" id="cr3" onclick="comprobar('cr3')"></div>
 
-        <div class="cableR" id="cr4"onclick="comprobar('cr4')"></div>
+        <div class="cableR" id="cr4" onclick="comprobar('cr4')"></div>
     </div>
-    <h2 id="info"></h1>
-    
-    <div id="pop-up">
-        <h1 id="mensajes">
-            ¡Felicidades, has contectado todos los cables!
+    <h2 id="info">
         </h1>
-        <div class="container" style="width: 100%; height: 30%; margin: 0 auto; text-align: center; margin-top: 15%">
-            <button id="replay" class="btn-popup">Volver a jugar</button>
-            <button id="menu" class="btn-popup">Volver al menú</button>
+
+        <div id="pop-up">
+            <h1 id="mensajes">
+                ¡Felicidades, has contectado todos los cables!
+            </h1>
+            <div class="container" style="width: 100%; height: 30%; margin: 0 auto; text-align: center; margin-top: 15%">
+                <button id="replay" class="btn-popup">Volver a jugar</button>
+                <button id="menu" class="btn-popup">Volver al menú</button>
+            </div>
         </div>
-    </div>   
 </body>
+
 </html>
