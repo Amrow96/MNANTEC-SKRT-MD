@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba Mapa</title>
+    <link rel="stylesheet" href="jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="estilos.css" type="text/css"/>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="jquery-jvectormap-2.0.3.min.js"></script>
+    <script src="jquery-jvectormap-world-mill.js"></script>
+    </head>
+<body >
+    <div class="container">
+        <img src="recursos\back.png" style="float: left">
+        <div id="world-map" style="width: 2184px; height: 1315px; margin: 0 auto"></div>       
+        <h1 id="name" align="center" style="width: 2184px; margin: 0 auto;height: 125px;  font-size: 50px;"></h1>
+        
+        <div id="lista" style="width: 2184px; margin: 0 auto; text-align: center">
+            <ol id="list" style="visibility: hidden; list-style: none; color: #3f6ae0;">
+                <li id="emisora1"> </li>
+                <li id="emisora2"> </li>
+                <li id="emisora3"> </li>
+            </ol>
+        </div>
+
+        <div style="width: 1092px; margin-top: 50px; margin: 0 auto">
+            <audio controls autoplay id="audioTag" style="width: 1092px; visibility: hidden;" > 
+                El navegador no soporta el reproductor de audio.
+            </audio>
+        </div>
+         
+    </div>
+    
+    <script>
+        var audioHTML = document.getElementById("audioTag");
+        
+        function sintonizar(url){   
+            audioHTML.setAttribute("style", "visibility: visible;");
+            audioHTML.setAttribute("style", "width: 1092px;");
+            audioHTML.setAttribute("src", url);
+            audioHTML.play();
+        }
+
+        function comprobarEmisoras(){
+            if (document.getElementById("emisora1").style.visibility == "hidden"){
+                document.getElementById("emisora1").style.visibility = "visible";
+            }
+
+            if (document.getElementById("emisora2").style.visibility == "hidden"){
+                document.getElementById("emisora2").style.visibility = "visible";
+            }
+
+            if (document.getElementById("emisora3").style.visibility == "hidden"){
+                document.getElementById("emisora3").style.visibility = "visible";
+            }
+        }
+
+        $(function(){
+            $('#world-map').vectorMap({
+                map: 'world_mill',
+                backgroundColor: ['#FFFFFF'],
+                regionsSelectable: true,
+                regionsSelectableOne: true,
+                markersSelectable: true,
+                markersSelectableOne: true,
+                regionStyle: {
+                    initial: {
+                        fill: '#3fc0e0', //#50cc82
+                        "fill-opacity": 1,
+                        stroke: 'none',
+                        "stroke-width": 0,
+                        "stroke-opacity": 1
+                    },
+                    hover: {
+                        "fill-opacity": 0.5,
+                        cursor: 'pointer'
+                    },
+                    selected: {
+                        fill: '#3f6ae0' // #4f7d61
+                    },
+                    selectedHover: {
+                    }
+                },
+                series: {
+                    regions: [{
+                        values: {
+                            'ES': '#428bca', //#3e9d01
+                            'AR': '#428bca',
+                            'US': '#428bca',
+                            'GB': '#428bca',
+                            'BO': '#428bca',
+                            'RU': '#428bca',
+                            'AU': '#428bca',
+                            'BR': '#428bca',
+                            'EG': '#428bca',
+                            'MA': '#428bca',
+                            'FR': '#428bca',
+                            'DE': '#428bca',
+                            'AO': '#428bca',
+                            'SA': '#428bca',
+                            'CN': '#428bca',
+                            'CA': '#428bca',
+                            'IN': '#428bca',
+                            'ID': '#428bca',
+                            'IT': '#428bca',
+                            'JP': '#428bca',
+                            'KZ': '#428bca',
+                            'MX': '#428bca',
+                            'NO': '#428bca',
+                            'NZ': '#428bca',
+                            'PT': '#428bca',
+                            'TR': '#428bca',
+                        },
+                        attribute: 'fill'
+                    }]
+                },
+                onRegionClick: function(element, code)
+                {
+                    var map = $('#world-map').vectorMap('get', 'mapObject');
+                    var region = map.getRegionName(code);
+                    var message = region  + ' ( ' + code.toUpperCase() + '). Emisoras:';
+
+                    document.querySelector('.container #name').innerHTML = message;
+                    document.getElementById("list").style.visibility = 'visible';
+
+                    var emisora1 = document.getElementById("emisora1");
+                    var emisora2 = document.getElementById("emisora2");
+                    var emisora3 = document.getElementById("emisora3");
+
+
+                    //-----------------Lista de emisoras según país. Reproducimos la seleccionada-----------------------------
+                    //Links --> appradiofm.com
+                    if (code === 'ES'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Radio España (offline)";
+                        emisora2.innerHTML = "Los 40 Principales";
+                        emisora3.innerHTML = "Ràdio Catalunya (offline)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioESPANYA.mp3")}); //esRadio: http://91.121.68.52:8054/;stream/1
+                        emisora2.addEventListener("click", function(){sintonizar("https://20073.live.streamtheworld.com/LOS40AAC.aac?csegid=12000&gdpr=1&gdpr_consent=BOq_cs6Oq_ctGAHABBESCv-AAAAst7_______9______9uz_Ov_v_f__33e8__9v_l_7_-___u_-3zd4u_1vf99yfm1-7etr3tp_87ues2_Xur__79__3z3_9pxP78k89r7337Ew_v-_v8b7BCIJ&dist=los40-web-live_streaming_play&tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=300x250&sbmid=34492ea3-fab4-4b56-b50f-3d28a1f81cf0")}); //Los 40 principales.
+                        emisora3.addEventListener("click", function(){sintonizar("recursos/radioCATALUNYA.mp3")}); // Cadena 100: http://cadena100-streamers-mp3.flumotion.com/cope/cadena100.mp3
+                    }
+                    else if(code === 'AR'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Radio Argentina (offline)";
+                        emisora2.innerHTML = "Radio Wtango (Buenos Aires)";
+                        emisora3.innerHTML = "Radio General Belgrano";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioARGENTINA.mp3")}); //Radio Argentina (corte)
+                        emisora2.addEventListener("click", function(){sintonizar("http://200.43.192.20:8020/;stream/1")}); //Wtango (Buenos Aires)
+                        emisora3.addEventListener("click", function(){sintonizar("http://63.247.65.202:8160/stream")}); //Radio General Belgrano
+                    }
+                    else if(code =='GB'){ 
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Radio Londres (offline)";
+                        emisora2.innerHTML = "Kiss 100 FM";
+                        emisora3.innerHTML = "Heart London 106.2FM";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioLONDRES.mp3")}); //BBC Radio 1  http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_q
+                        emisora2.addEventListener("click", function(){sintonizar("http://live-kiss.sharp-stream.com/kissnational.aac")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://media-ice.musicradio.com/HeartLondonMP3")}); //
+                    }
+                    else if (code == 'BO'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "FM Bolivia";
+                        emisora2.innerHTML = "ECO Radio Bolivia";
+                        emisora3.innerHTML = "Radio ERBOL";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://stm11.streaming.profesional.bo:11300/;")}); //FM Bolivia
+                        emisora2.addEventListener("click", function(){sintonizar("http://94.23.6.53:8038/stream")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://108.170.61.114:7223/live")}); //
+                    }
+                    else if(code == 'FR'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Chèrie FM";
+                        emisora2.innerHTML = "France Inter";
+                        emisora3.innerHTML = "France Info";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://185.52.127.168/fr/30201/mp3_128.mp3?origine=radiogenre")}); //Chèrie FM
+                        emisora2.addEventListener("click", function(){sintonizar("http://icecast.radiofrance.fr/franceinter-midfi.mp3")}); //France inter
+                        emisora3.addEventListener("click", function(){sintonizar("http://icecast.radiofrance.fr/franceinfo-midfi.mp3")}); //France info
+                    }
+                    else if(code == 'US'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "THE FOX 95.7 FM";
+                        emisora2.innerHTML = "The Jazz Groove (LA)";
+                        emisora3.innerHTML = "Radio Country Live (NY)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://14953.live.streamtheworld.com/KJFXFMAAC_SC")}); //THE FOX 95.7 FM
+                        emisora2.addEventListener("click", function(){sintonizar("http://199.180.75.36/stream")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://streaming.radiostreamlive.com/radiocountrylive_devices")}); //
+                    }
+                    else if (code == 'BR'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Super Rádio Tupi (Río)";
+                        emisora2.innerHTML = "Radio Brasil (offline)";
+                        emisora3.innerHTML = "Radio Hits Brasil";
+
+                        emisora1.addEventListener("click", function(){sintonizar("https://8923.brasilstream.com.br/stream")}); //Super Rádio Tupi
+                        emisora2.addEventListener("click", function(){sintonizar("recursos/radioBRAZIL.mp3")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://afiliadamix3.crossradio.com.br:9004/;stream/1")}); //
+                    }
+                    else if (code == 'EG'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Radio MASR - 88.7 FM (El Cairo)";
+                        emisora2.innerHTML = "Radio Sawa Egypt";
+                        emisora3.innerHTML = "Radio Egipto (offline)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://streaming.radio.co/scc13a6b96/listen")}); //RADIO MASR - 88.7 FM (Egipto, El Cairo)
+                        emisora2.addEventListener("click", function(){sintonizar("https://n09.radiojar.com/whbvyphna3quv?rj-ttl=5&rj-tok=AAABbtW7bfkA0zscMzUECBRNjg")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("recursos/radioEGIPTE.mp3")}); //
+                    }
+                    else if (code == 'MA'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Radio ATBIR";
+                        emisora2.innerHTML = "Radio Aswat";
+                        emisora3.innerHTML = "Radio MARS - 91.2 FM";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://node-15.zeno.fm/bqdbb6hd0neuv?rj-ttl=5&rj-tok=AAABbrHR6QUA2eTk8Kd5VErW2Q")}); //RADIO ATBIR (Marruecos)
+                        emisora2.addEventListener("click", function(){sintonizar("http://broadcast.ice.infomaniak.ch/aswat-high")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("http://radiomars.ice.infomaniak.ch/radiomars-128.mp3")}); //
+                    }
+                    else if (code == 'AU'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "MOVE FM (Lithgow , New South Wales)";
+                        emisora2.innerHTML = "Australian Country Radio";
+                        emisora3.innerHTML = "Radio Australia (offline)";
+
+                        emisora1.addEventListener("click", function(){sintonizar("https://au1.fastcast4u.com/proxy/midwestr?mp=/1")}); //MOVE FM (Lithgow , New South Wales, Australia)
+                        emisora2.addEventListener("click", function(){sintonizar("http://streaming.radio.co/s5ea3fdd1c/low")}); //
+                        emisora3.addEventListener("click", function(){sintonizar("recursos/radioAUSTRALIA.mp3")}); //
+                    }
+                    else if (code == 'RU'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "ANON FM";
+                        emisora3.innerHTML = "Ràdio Russia (offline)";
+                        emisora2.innerHTML = "Voice of Russia";
+
+                        emisora1.addEventListener("click", function(){sintonizar("http://anon.fm:8000/radio.aac")}); //ANON FM (Rusia)
+                        emisora3.addEventListener("click", function(){sintonizar("recursos/radioRUSSIA.mp3")}); //
+                        emisora2.addEventListener("click", function(){sintonizar("http://icecast-ruvr.cdnvideo.ru/rian.voicerus")}); //
+                    }
+                    else if (code == 'DE'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Alemanya (offline)";
+                        emisora3.innerHTML = "";
+                        emisora2.innerHTML = "";
+
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioALEMANYA.mp3")}); //Radio alemana (corte)
+                    }
+                    else if (code == 'AO'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Angola (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioANGOLA(ÀFRICA).mp3")});
+                    }
+                    else if (code == 'SA'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Arabia Saudi (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioARABIASAUDI.mp3")});
+                    }
+                    else if (code == 'CN'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Beijing, Pekín (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioBEIJING(XINA).mp3")});
+                    }
+                    else if (code == 'CA'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Canadà (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioCANADÀ.mp3")});
+                    }
+                    else if (code == 'IN'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio India (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioINDIA.mp3")});
+                    }
+                    else if (code == 'ID'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Indonèsia (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioINDONESIA.mp3")});
+                    }
+                    else if (code == 'IT'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Itàlia (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioITÀLIA.mp3")});
+                    }
+                    else if (code == 'JP'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Japó (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioJAPÓ.mp3")});
+                    }
+                    else if (code == 'KZ'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Kazakhstan (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioKAZAKHSTAN.mp3")});
+                    }
+                    else if (code == 'MX'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Mexic (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioMEXIC.mp3")});
+                    }
+                    else if (code == 'NO'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Noruega (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioNORUEGA.mp3")});
+                    }
+                    else if (code == 'NZ'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio New Zealand (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioNOVAZELANDA.mp3")});
+                    }
+                    else if (code == 'PT'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Portugal (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioPORTUGAL.mp3")});
+                    }
+                    else if (code == 'TR'){
+                        comprobarEmisoras();
+                        emisora1.innerHTML = "Ràdio Turquia (offline)";
+                        
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+
+                        emisora1.addEventListener("click", function(){sintonizar("recursos/radioTURQUIA.mp3")});
+                    }
+                    else{ //Cuando se pulse un país que no tiene emisoras relacionadas.
+                        emisora1.innerHTML = "";
+                        emisora3.innerHTML = "";
+                        emisora2.innerHTML = "";
+
+                        emisora1.style.visibility = "hidden";
+                        emisora2.style.visibility = "hidden";
+                        emisora3.style.visibility = "hidden";
+                    }
+                },
+            });
+        });
+    </script>
+</body>
+</html>

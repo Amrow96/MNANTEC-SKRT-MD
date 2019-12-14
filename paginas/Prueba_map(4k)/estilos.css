@@ -1,0 +1,25 @@
+ol.list{
+    list-style: none;
+    background-color: #ffffff;
+    color: #3f6ae0; /* #50cc82 */
+}
+
+
+li{
+    padding: 5px 10px;
+    background-color: #EEEEEE;
+    border: 1px solid #DDDDDD;
+    font-size: 48px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 125px;
+
+}
+
+li:hover{
+    /* opacity: 0.6; */
+    background-color: #3fc0e0;
+    color: #ffffff;
+}
