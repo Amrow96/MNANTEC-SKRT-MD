@@ -11,14 +11,14 @@ var posicio = 0;
 //Capturem els elements del html i els inicialitzem
 var interlocutor = document.getElementById("guia");
 var botoEnrere = document.getElementById("atras");
-var image = document.getElementById("imagen");
+var image = document.getElementById("imatge");
 var botoEndevant = document.getElementById("adelante");
 
 //Assignem les imatges als
 interlocutor.style.backgroundImage = "./../img/interlocutor.png";
 botoEndevant.style.backgroundImage = "./../img/alante.png";
 botoEnrere.style.backgroundImage = "./../img/atras.png";
-//loadImage("./../img/presentacio.png"); //TODO: Posar la imatge d'emisió
+image.style.backgroundImage = "./../img/interlocutor.png"; //TODO: Posar la imatge d'emisió
 
 //Creem els clicks de <- i ->
 botoEnrere.addEventListener("click", function retroceder() {

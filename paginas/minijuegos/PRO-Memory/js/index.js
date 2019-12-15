@@ -1,6 +1,7 @@
 //#region Variables Globals
 var moviments = document.getElementById("moviments");
 var torn = 0;
+numeroParelles = 0;
 var colorPrincipal = "#428BCA";
 var colorContingutCarta = "#fefefe";
 //#endregion
@@ -8,9 +9,9 @@ var colorContingutCarta = "#fefefe";
 //#region Datos
 var dades =
   '{ "Tarjetes" : [' +
-  '{ "name":"Codificador de Radio" , "image":"Transmisor", "info":"Serveix per transformar les ones digitals a frequencia de radio" },' +
-  '{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
-  '{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
+  //'{ "name":"Codificador de Radio" , "image":"Transmisor", "info":"Serveix per transformar les ones digitals a frequencia de radio" },' +
+  //'{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
+  //'{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
   '{ "name":"Antena" , "image":"TorreRadio", "info":"Augmenta la senyal de radio" },' +
   '{ "name":"Taula de so" , "image":"MesaSonido", "info":"Permet ajustar els volums dels nostres audios" } ]}';
 //#endregion
@@ -18,9 +19,9 @@ var dades =
 //#region Objectes
 var Escenari = {
   element: document.getElementById("escenari"),
-  width: 3000,
+  width: 1800,
   //600
-  height: 2000,
+  height: 1200,
   //400 factor x5
   initialize: function() {
     this.element.style.width = this.width + "px";
@@ -36,8 +37,8 @@ var Carta = {
     novaTarja.dx = dx;
     novaTarja.dy = dy;
     //Dimensións
-    novaTarja.width = 350; //70
-    novaTarja.height = 500; //100 factor x5
+    novaTarja.width = 210; //70
+    novaTarja.height = 300; //100 factor x5
     //Afegim els valors a la etiqueta
     novaTarja.element = document.createElement("div");
     novaTarja.element.style.backgroundColor = colorPrincipal;
@@ -194,6 +195,20 @@ function start() {
               mostrarEsquenaCarta(girades[1]);
               mostrarEsquenaCarta(girades[0]);
             }
+            var numeros = document.getElementById("escenari").childElementCount;
+            if (numeros == 0) {
+              var txt;
+              var jugades = moviments.textContent;
+              var resultat = (numeroParelles / jugades.valueOf) * 10;
+              if (confirm("Has guanyat, amb una puntuació de: " + resultat)) {
+                txt = "Tornar a començar!"; //Resetejem el joc
+                init();
+                foto.style.backgroundImage = "";
+                texto.textContent = "";
+              } else {
+                txt = "You pressed Cancel!"; //No fem res
+              }
+            }
 
             suma();
             torn = 0;
@@ -212,9 +227,9 @@ function init() {
   moviments.textContent = 0;
 
   //Inicialitzem el mapa
-  Escenari.initialize();
 
   var info = JSON.parse(dades);
+  numeroParelles = info.Tarjetes.length;
   var newSet = info.Tarjetes; //Agafem els valor del array
   newSet = newSet.concat(newSet); //Dupliquem els valors per tenir la parella
   newSet = shuffle(newSet); //Barrejem els elements perque no estiguin junts
@@ -229,8 +244,8 @@ function init() {
 
   //Funcionalitat de click i de comparació
   start();
-  //TODO: Fer un missatge de la puntuació quan no quedin elements al escenari ((elements.count()/moviments)*10)
 }
 
 //Executem el programa
+Escenari.initialize();
 init();
