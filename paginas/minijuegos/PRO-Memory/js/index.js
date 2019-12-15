@@ -209,9 +209,9 @@ function start() {
                 confirm(
                   "Has guanyat, amb una puntuació de: " +
                     resultat.toFixed(2) +
-                    " punts/" +
+                    " punts / " +
                     numeroParelles * 2 +
-                    " \n Polsa OK per tornar a jugar"
+                    " punts \n Polsa OK per tornar a jugar"
                 )
               ) {
                 //Resetejem el joc
