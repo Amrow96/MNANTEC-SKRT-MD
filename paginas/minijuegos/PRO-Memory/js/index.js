@@ -200,30 +200,29 @@ function start() {
 
             suma();
             torn = 0;
-
-            var numeros = document.getElementById("escenari").childElementCount;
-            if (numeros == 0) {
-              var txt;
-              var jugades = moviments.textContent;
-              var resultat =
-                numeroParelles * 2 - jugades.valueOf() / (numeroParelles * 2);
-              if (
-                confirm(
-                  "Has guanyat, amb una puntuació de: " +
-                    resultat.toFixed(2) +
-                    " punts / " +
-                    numeroParelles * 2 +
-                    " punts \n Polsa OK per tornar a jugar"
-                )
-              ) {
-                //Resetejem el joc
-                init();
-                foto.style.backgroundImage = "";
-                texto.textContent = "";
-              } else {
-                txt = "You pressed Cancel!"; //No fem res
+            setTimeout(function win() {
+              var numeros = document.getElementById("escenari")
+                .childElementCount;
+              if (numeros == 0) {
+                var jugades = moviments.textContent;
+                var resultat =
+                  numeroParelles * 2 - jugades.valueOf() / (numeroParelles * 2);
+                if (
+                  confirm(
+                    "Has guanyat, amb una puntuació de: " +
+                      resultat.toFixed(2) +
+                      " punts / " +
+                      numeroParelles * 2 +
+                      " punts \n Polsa ''Aceptar'' per tornar a jugar"
+                  )
+                ) {
+                  //Resetejem el joc
+                  init();
+                  foto.style.backgroundImage = "";
+                  texto.textContent = "";
+                }
               }
-            }
+            }, 500);
           }
         },
 
