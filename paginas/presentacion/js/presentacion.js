@@ -18,11 +18,13 @@ var botoEndevant = document.getElementById("adelante");
 interlocutor.style.backgroundImage = "./../img/interlocutor.png";
 botoEndevant.style.backgroundImage = "./../img/alante.png";
 botoEnrere.style.backgroundImage = "./../img/atras.png";
-loadImage("./../img/presentacio.png"); //TODO: Posar la imatge d'emisió
+//loadImage("./../img/presentacio.png"); //TODO: Posar la imatge d'emisió
 
+//Creem els clicks de <- i ->
 botoEnrere.addEventListener("click", function retroceder() {
   if (posicio == 0) {
-    posicio = valormaxim;
+    //Controlem que no s'escapi dels limits
+    posicio = dades.length;
   } else {
     posicio--;
   }
@@ -30,7 +32,8 @@ botoEnrere.addEventListener("click", function retroceder() {
 });
 
 botoEndevant.addEventListener("click", function avanzar() {
-  if (posicio == valormaxim) {
+  if (posicio == dades.length) {
+    //Controlem que no s'escapi dels limits
     posicio = 0;
   } else {
     posicio++;
@@ -39,7 +42,7 @@ botoEndevant.addEventListener("click", function avanzar() {
 });
 
 function loadImage(element) {
-  image.style.backgroundImage = element.image;
+  image.style.backgroundImage = element;
   //Capturem en un array els textos que tingui i els mostrem amb un retard de 10s
   var textos = element.textos;
   textos.forEach(diapo => {
