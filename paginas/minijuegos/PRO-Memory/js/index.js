@@ -10,8 +10,8 @@ var colorContingutCarta = "#fefefe";
 var dades =
   '{ "Tarjetes" : [' +
   '{ "name":"Codificador de Radio" , "image":"Transmisor", "info":"Serveix per transformar les ones digitals a frequencia de radio" },' +
-  // '{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
-  //'{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
+  '{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
+  '{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
   '{ "name":"Antena" , "image":"TorreRadio", "info":"Augmenta la senyal de radio" },' +
   '{ "name":"Taula de so" , "image":"MesaSonido", "info":"Permet ajustar els volums dels nostres audios" } ]}';
 //#endregion
@@ -163,6 +163,7 @@ function start() {
         mostrarContingutCarta(this);
       } else if (this.dataset.estat === "frontal") {
         mostrarEsquenaCarta(this);
+        torn--;
       }
 
       setTimeout(
@@ -184,7 +185,8 @@ function start() {
 
               foto.style.backgroundImage =
                 "url('/PRO-Memory/media/" + nested.dataset.imatge + ".svg')";
-              texto.textContent = nested.dataset.info;
+              texto.textContent =
+                nested.dataset.nom + ":   " + nested.dataset.info;
 
               var paperera = parent.removeChild(nested);
               nested = girades[1];
