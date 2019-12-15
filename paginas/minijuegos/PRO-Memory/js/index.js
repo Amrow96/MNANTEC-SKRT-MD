@@ -10,8 +10,8 @@ var colorContingutCarta = "#fefefe";
 var dades =
   '{ "Tarjetes" : [' +
   '{ "name":"Codificador de Radio" , "image":"Transmisor", "info":"Serveix per transformar les ones digitals a frequencia de radio" },' +
-  '{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
-  '{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
+  // '{ "name":"Microfon" , "image":"Microfono", "info":"Enregistra les freuquencies de só" },' +
+  //'{ "name":"Cable" , "image":"Cable", "info":"Ens serveix per interconectar tots els elements" },' +
   '{ "name":"Antena" , "image":"TorreRadio", "info":"Augmenta la senyal de radio" },' +
   '{ "name":"Taula de so" , "image":"MesaSonido", "info":"Permet ajustar els volums dels nostres audios" } ]}';
 //#endregion
@@ -195,17 +195,22 @@ function start() {
               mostrarEsquenaCarta(girades[1]);
               mostrarEsquenaCarta(girades[0]);
             }
+
+            suma();
+            torn = 0;
+
             var numeros = document.getElementById("escenari").childElementCount;
             if (numeros == 0) {
               var txt;
               var jugades = moviments.textContent;
-              var resultat = (numeroParelles / jugades.valueOf()) * 10;
+              var resultat =
+                numeroParelles * 2 - jugades.valueOf() / (numeroParelles * 2);
               if (
                 confirm(
                   "Has guanyat, amb una puntuació de: " +
                     resultat.toFixed(2) +
                     " punts/" +
-                    numeroParelles +
+                    numeroParelles * 2 +
                     " \n Polsa OK per tornar a jugar"
                 )
               ) {
@@ -217,9 +222,6 @@ function start() {
                 txt = "You pressed Cancel!"; //No fem res
               }
             }
-
-            suma();
-            torn = 0;
           }
         },
 
