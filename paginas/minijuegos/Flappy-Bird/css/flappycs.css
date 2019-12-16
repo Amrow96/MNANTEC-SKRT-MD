@@ -6,6 +6,8 @@
 
 }
 
+
+
 #fondo {
   width: 3000px;
   height: 1680px;
@@ -16,7 +18,7 @@
 #botones {
   width: 450px;
   height: 1680px;
-  background-color: #a84212;
+  background-color: #428BCA;
   display: inline-block;
 }
 
@@ -28,7 +30,7 @@
   margin-top: 20%;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #e47658;
+  background-color: #3FC0E0;
   background-image: url("./../media/up.png");
 }
 
@@ -41,7 +43,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-image: url("./../media/down.png");
-  background-color: #e47658;
+  background-color: #3FC0E0;
 }
 
 #person {
