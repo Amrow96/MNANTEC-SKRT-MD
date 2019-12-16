@@ -1,19 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Presentació</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/miCSS.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <img src="img/emisio.png" style="width:100%" />
+        <div class="text">Caption Text</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <img src="img/recepcio.png" style="width:100%" />
+        <div class="text">Caption Two</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="img/recepcio.png" style="width:100%" />
+        <div class="text">Caption Three</div>
+      </div>
+
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <br />
+
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script src="js/presentacion.js"></script>
+  </body>
+</html>
+
+<!-- Codi Handmade
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="css/miCSS.css" rel="stylesheet" />
   </head>
   <body>
     <!-- TODO: posar els elements en inlineblock i assignar-li un espai de 3|6|3  -->
-    <div id="contenidor">
+<!-- <div id="contenidor"> 
       <div id="atras"></div>
       <div id="imatge"></div>
       <div id="adelante"></div>
     </div>
-    <div id="guia"></div>
+
+    <script src="js/presentacion.js"></script>
   </body>
-  <script src="js/presentacion.js"></script>
 </html>
+ -->
