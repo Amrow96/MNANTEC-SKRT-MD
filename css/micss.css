@@ -1,8 +1,9 @@
 body {
-  background-color: #428BCA;}
+  background-color: #428BCA;
+}
 
 
-#carta {
+.card {
   background-color: #3FC0E0;
 }
 
@@ -19,11 +20,8 @@ body {
   font-size: 1.4vw;
 }
 
-
-
-
-#btninicio {
-  margin-top: 10px;
+nav {
+  height: 13vh;
 }
 
 div h5 {

@@ -7,7 +7,7 @@
 <?php endblock() ?>
 <?php startblock('principal') ?>
 
-<div class=" mt-4 text-center">
+<div class=" mt-4 mb-4 text-center">
     <h5 class="contingut text-white">
         Som un grup d'estudiants del Centre D'estudis Politecnics<br />
         que estem cursant el grau superior de Desenvolupament d'Aplicacions Web.
@@ -18,7 +18,7 @@
 
 <div class="container col-10">
     <div class="card-deck mb-3 text-center">
-        <div id="carta" class="card">
+        <div class="card">
             <img src="./img/pau.png" class="card-img-top" alt="..." />
             <div class="card-body">
                 <h5 class="titol text-white">Pau Gonzalez</h5>
@@ -29,7 +29,7 @@
                 </p>
             </div>
         </div>
-        <div id="carta" class="card">
+        <div class="card">
             <img src="./img/jorge.png" class="card-img-top" alt="..." />
             <div class="card-body">
                 <h5 class="titol text-white">Jorge Sereno</h5>
@@ -39,7 +39,7 @@
                 </p>
             </div>
         </div>
-        <div id="carta" class="card">
+        <div class="card">
             <img src="./img/edu.png" class="card-img-top" alt="Eduard Gomà" />
             <div class="card-body">
                 <h5 class="titol text-white">Eduard Gomà</h5>
