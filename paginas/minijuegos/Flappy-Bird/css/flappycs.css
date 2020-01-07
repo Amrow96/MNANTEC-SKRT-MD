@@ -6,7 +6,10 @@
 
 }
 
-
+#cuadro{
+  display: table;
+  margin: 0 auto;
+}
 
 #fondo {
   width: 3000px;

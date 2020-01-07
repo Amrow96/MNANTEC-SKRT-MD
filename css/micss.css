@@ -1,9 +1,11 @@
-/*!
- * Bootstrap v4.0.0 (https://getbootstrap.com)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+body {
+  background-color: #428BCA;}
+
+
+#carta {
+  background-color: #3FC0E0;
+}
+
 .btn {
   font-size: 2vw;
 }
@@ -15,4 +17,15 @@
 
 .contingut {
   font-size: 1.4vw;
+}
+
+
+
+
+#btninicio {
+  margin-top: 10px;
+}
+
+div h5 {
+  font-size: 5rem;
 }

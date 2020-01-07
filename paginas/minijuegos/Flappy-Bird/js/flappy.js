@@ -19,7 +19,7 @@ function myFunction(){
   volverjugar.onclick=rejugar;
   
   var personaje_y = 720;
-  var tuberia_x = 2940; //donde han de empezar las tuberias en X
+  var tuberia_x = 3500; //donde han de empezar las tuberias en X
   var choques = 0; //las colisiones
   var tocado = false; //tema tuberia 
   var puntuacion = 0;  //la puntuacion
@@ -71,9 +71,9 @@ function myFunction(){
           
          }
         
-        if(tuberia_x == 450){
+        if(tuberia_x == 990){
           tocado = true;
-          tuberia_x=2940;
+          tuberia_x=3500;
         }
   }
     
@@ -105,7 +105,7 @@ function myFunction(){
     var espacio = tuberiaB.offsetTop;
     
     //tema colision parte superior
-    if(personaje_y <= tub_h && res <= 570 && invencible == false){
+    if(personaje_y <= tub_h && res <= 1110 && invencible == false){
       choques++;
       invencible = true;
       document.getElementById("person").style.backgroundColor = "red";
@@ -114,7 +114,7 @@ function myFunction(){
     }
     
     //tema colision parte inferior
-    if((personaje_y+20) >= (espacio-120) && res <= 570 && invencible == false){
+    if((personaje_y+20) >= (espacio-120) && res <= 1110 && invencible == false){
     
       choques++;
       invencible=true;
