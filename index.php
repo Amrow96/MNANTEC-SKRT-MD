@@ -12,6 +12,7 @@
                 <img class="card-img-top" src="./paginas/Prueba_map(4k)/recursos/miniatura.png" alt="Card image" style="width:100%">
             </div>
             <div class="card-body">
+                <!-- TODO: carregar els textos desde variables per fer-ho multilingue -->
                 <h2 class="my-0 font-weight-normal">Mapa de la Radio</h2>
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>Puedes escuchar </li>
@@ -23,12 +24,11 @@
         </div>
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <img class="card-img-top" src="./img/minigames.jfif" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="./img/minigames.png" alt="Card image" style="width:100%">
 
             </div>
             <div class="card-body">
                 <h2 class="my-0 font-weight-normal">Minijuegos</h2>
-                <!-- <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1> -->
                 <ul class="list-unstyled mt-3 mb-4">
                     <li>Emisión</li>
                     <li>Transmisión</li>
@@ -39,7 +39,7 @@
         </div>
         <div class="card mb-4 box-shadow">
             <div class="card-header">
-                <img class="card-img-top" src="./img/radio.PNG" alt="Card image" style="width:100%">
+                <img class="card-img-top" src="./img/radio.png" alt="Card image" style="width:100%">
             </div>
             <div class="card-body">
                 <h2 class="my-0 font-weight-normal">Información</h2>
