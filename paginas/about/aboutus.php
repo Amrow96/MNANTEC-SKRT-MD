@@ -1,8 +1,6 @@
 <?php include './../../plantilla_base.php' ?>
 
 <?php startblock('capcelera') ?>
-<link href="../../css/micss.css" rel="stylesheet" />
-
 <title>Sobre Nosaltres</title>
 <?php endblock() ?>
 <?php startblock('principal') ?>
