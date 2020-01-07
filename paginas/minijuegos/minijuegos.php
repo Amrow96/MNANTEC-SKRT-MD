@@ -21,11 +21,10 @@
                 </ul>
                 <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='./PRO-Memory/index.html'">A jugar!</button>
             </div>
-
         </div>
         <!-- #endregion -->
         <!-- #region Joc de Transmissió -->
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header">
                 <img class="card-img-top" src="./Flappy-Bird/media/transmision.PNG" alt="Card image" style="width:100%">
             </div>
@@ -42,7 +41,7 @@
         </div>
         <!-- #endregion -->
         <!-- #region Joc de Recepció -->
-        <div class="card mb-4">
+        <div class="card ">
             <div class="card-header">
                 <img class="card-img-top" src="../minijuegos/Prueba_juego/img/miniatura.png" alt="Card image" style="width:100%">
             </div>

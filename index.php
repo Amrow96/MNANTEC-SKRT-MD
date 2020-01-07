@@ -36,7 +36,7 @@
                     <li class="contingut">Transmisión</li>
                     <li class="contingut">Recepción</li>
                 </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='./paginas/minijuegos/minijuegos.html'">A jugar!</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='./paginas/minijuegos/minijuegos.php'">A jugar!</button>
             </div>
         </div>
         <!-- Presentació -->
