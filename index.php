@@ -51,7 +51,7 @@
                     <li class="contingut">15 GB of storage</li>
                     <li class="contingut">Help center access</li>
                 </ul>
-                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='./paginas/presentacion/presentacion.html'">Aprende!</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='./paginas/presentacion/presentacion.php'">Aprende!</button>
             </div>
         </div>
     </div>

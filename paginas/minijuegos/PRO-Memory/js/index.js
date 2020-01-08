@@ -21,7 +21,7 @@ var creadorDeCartes = function(nom, imatge, info) {
   card1.element.dataset.nom = nom;
   card1.element.dataset.info = info;
   card1.element.dataset.estat = "dorsal";
-  card1.element.style.backgroundImage = "url('/PRO-Memory/media/BackCard.svg')";
+  card1.element.style.backgroundImage = "url('.//..//media//BackCard.svg')";
 
   //Dibuixem els elements dins del Escenario assegurant-nos de que no es pintaran a mig camí
   var altura = Escenari.height - card1.height;
@@ -54,14 +54,14 @@ var shuffle = function shuffle(o) {
 function mostrarEsquenaCarta(carta) {
   carta.dataset.estat = "dorsal";
   carta.style.backgroundColor = colorPrincipal;
-  carta.style.backgroundImage = "url('/PRO-Memory/media/BackCard.svg')";
+  carta.style.backgroundImage = "url('.//..//media//BackCard.svg')";
 }
 
 function mostrarContingutCarta(carta) {
   carta.dataset.estat = "frontal";
   carta.style.backgroundColor = colorContingutCarta;
   carta.style.backgroundImage =
-    "url('/PRO-Memory/media/" + carta.dataset.imatge + ".svg')";
+    "url('.//..//media//" + carta.dataset.imatge + ".svg')";
 }
 
 //#endregion
@@ -106,7 +106,7 @@ function start() {
               texto.style.padding = "5%";
 
               foto.style.backgroundImage =
-                "url('/PRO-Memory/media/" + nested.dataset.imatge + ".svg')";
+                "url('.//..//media//" + nested.dataset.imatge + ".svg')";
               texto.textContent =
                 nested.dataset.nom + ":   " + nested.dataset.info;
 
