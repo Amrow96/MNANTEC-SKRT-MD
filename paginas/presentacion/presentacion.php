@@ -43,4 +43,3 @@
 <br />
 
 <script src="js/presentacion.js"></script>
-<?php endblock() ?>

@@ -1,62 +1,70 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/miCSS.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link href="./../../css/micss.css" rel="stylesheet" />
+    <title>Presentació Interactiva</title>
   </head>
+
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h5 class="mr-auto ml-3 ">
+        <a class="titol btn" href="./../../index.html">
+          Museu MNACTEC
+        </a>
+      </h5>
+
+      <!-- TODO posar els inputs de tipus botó i fer que el fondo sigui la imatge
+        <div class="text-center">
+            <input type="image" src="./img/espana.png" />
+            <input type="image" src="./img/english.png" onclick="location.href='./paginas/index.en.html'" />
+            <input type="image" src="./img/catalan.png" onclick="location.href='./paginas/index.cat.html'" />
+        </div>-->
+      <div class="mt-3 mb-3">
+        <a
+          class="btn btn-primary mr-3 titol right"
+          href="./../about/aboutus.html"
+          >Qui Som?</a
+        >
+      </div>
+    </nav>
     <div class="slideshow-container">
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/emisio.png" style="width:100%" />
-        <div class="text">Caption Text</div>
+      <div class="mySlides">
+        <img src="./img/emisio.png" style="width:100%" />
       </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/recepcio.png" style="width:100%" />
-        <div class="text">Caption Two</div>
+      <div class="mySlides">
+        <img src="./img/recepcio.png" style="width:100%" />
       </div>
-
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all0.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all0.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all1.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all1.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all2.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all2.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all3.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all3.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all4.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all4.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all5.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all5.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all6.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all6.png" style="width:100%" />
       </div>
-      <div class="mySlides fade">
-        <div class="numbertext"></div>
-        <img src="img/all7.png" style="width:100%" />
-        <div class="text">Caption Three</div>
+      <div class="mySlides">
+        <img src="./img/all7.png" style="width:100%" />
       </div>
 
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -64,32 +72,6 @@
     </div>
     <br />
 
-    <div style="text-align:center">
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-      <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-
-    <script src="js/presentacion.js"></script>
+    <script src="./js/presentacion.js"></script>
   </body>
 </html>
-
-<!-- Codi Handmade
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/miCSS.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- TODO: posar els elements en inlineblock i assignar-li un espai de 3|6|3  -->
-<!-- <div id="contenidor"> 
-      <div id="atras"></div>
-      <div id="imatge"></div>
-      <div id="adelante"></div>
-    </div>
-
-    <script src="js/presentacion.js"></script>
-  </body>
-</html>
- -->
